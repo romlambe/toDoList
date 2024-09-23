@@ -13,7 +13,7 @@ export default function App() {
 			try{
 				const storedTasks = await AsyncStorage.getItem('tasks');
 				if (storedTasks !== null)
-					setTask(JSON.parse(storedTasks));
+					setTaskItems(JSON.parse(storedTasks));
 			}
 			catch(error){
 				console.log('Erreur lors du chargement', error);
@@ -33,8 +33,8 @@ export default function App() {
 	const handleAddTask = () =>{
 		Keyboard.dismiss();
 		if (task && task.length > 0){
-			setTaskItems([...taskItems, task]);
 			const newTasks = ([...taskItems, task]);
+			// setTaskItems([...taskItems, task]);
 			setTaskItems(newTasks);
 			saveTask(newTasks);
 			setTask(null);
